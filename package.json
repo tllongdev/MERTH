@@ -7,12 +7,11 @@
     "test": "test"
   },
   "keywords": [
-    "web",
     "scraping",
-    "pathfinding",
-    "algorithm",
-    "efficient",
-    "route"
+    "web scraping",
+    "puppeteer",
+    "Traveling Salesman",
+    "shortest distance algorithm"
   ],
   "author": "Timothy Lee Long",
   "license": "MIT",
