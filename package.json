@@ -1,0 +1,22 @@
+{
+  "name": "merth",
+  "version": "1.0.0",
+  "description": "Most Efficient Route Through HomeDepot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "web",
+    "scraping",
+    "pathfinding",
+    "algorithm",
+    "efficient",
+    "route"
+  ],
+  "author": "Timothy Lee Long",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^2.1.1"
+  }
+}
