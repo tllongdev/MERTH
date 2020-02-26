@@ -2,6 +2,15 @@ const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 const iPhoneXR = devices['iPhone XR landscape'];
 
+const Item = {
+  divCartItem: '',
+  itemName: '',
+  x: '',
+  y: ''
+};
+
+export const itemArray = [];
+
 puppeteer.launch({ headless: false }).then(async browser => {
   const page = await browser.newPage();
   // emulate mobile browser to access store map link
@@ -16,14 +25,12 @@ puppeteer.launch({ headless: false }).then(async browser => {
   await page.goto(cartUrl);
   await page.waitForSelector('div.cartTotals');
 
-  // select store --------------->
+  // <--------------- select store --------------->
   await page.click('#myStoreMobile > a > span > div');
   await page.waitForSelector('#myStore-formInput');
   await page.focus('#myStore-formInput');
   await page.keyboard.type(storeNumber);
-  // await page.$eval('#myStore-formInput', input => (input.value = storeNumber));
   await page.keyboard.press('Enter');
-  // await page.click('img.localization__icn--search');
   await page.waitForSelector(
     '#myStore-list > div:nth-child(1) > div.localization__button--select > a > span'
   );
@@ -31,7 +38,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
     '#myStore-list > div:nth-child(1) > div.localization__button--select > a > span'
   );
   await page.click('div.Mask.Mask--open');
-  // select store --------------->
+  // <--------------- select store --------------->
 
   // grab each div.cartItem and store in cartItems array
   const cartItems = await page.$$('div.cartItem');
@@ -63,6 +70,13 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
     // (await page.waitForSelector('g.storemarker')) ||
     await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
+    // if (document.querySelector('g.storemarker')) {
+    // add
+    // document.querySelector('g.storemarker').dataset.x
+    // and
+    // document.querySelector('g.storemarker').dataset.y
+    // to new Item object
+    // }
 
     // zoom out 1x store layout
     await page.click('rect.minus-box');
@@ -73,7 +87,8 @@ puppeteer.launch({ headless: false }).then(async browser => {
     // increment screenshotCount for .png naming sequence
     ++screenshotCount;
   }
-
+  //document.querySelector('g.storemarker').dataset.x
+  //document.querySelector('g.storemarker').dataset.y
   // grab the g.active-aisle (g.storemarker) innerHtml and store it in ITEM object
   // need to grab rect.(x,y) coordinates from g.storemarker for each item
   // Traveling Salesman algorithm + rerender div.cartItem(s) in correct order
