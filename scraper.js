@@ -10,7 +10,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
   let cartUrl =
     'https://www.homedepot.com/mycart/home?userId=cd14e1db-18d4-4f32-9f20-49a9814b2cc8&customerId=cd14e1db-18d4-4f32-9f20-49a9814b2cc8&sharedCartId=HL100097460525?cm_mmc=ecc-_-THD_SHARE_CART__V1_M1_CA-_-VIEW_CART#';
 
-  let storeNumber = 1912;
+  let storeNumber = '1912';
 
   // establish cart history by navigating to cart url
   await page.goto(cartUrl);
@@ -20,7 +20,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
   await page.click('#myStoreMobile > a > span > div');
   await page.waitForSelector('#myStore-formInput');
   await page.focus('#myStore-formInput');
-  await page.keyboard.type('1912');
+  await page.keyboard.type(storeNumber);
   // await page.$eval('#myStore-formInput', input => (input.value = storeNumber));
   await page.keyboard.press('Enter');
   // await page.click('img.localization__icn--search');
@@ -65,7 +65,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
     await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
 
     // zoom out 1x store layout
-    // await page.click('rect.minus-box');
+    await page.click('rect.minus-box');
 
     // screenshot the store map
     await page.screenshot({ path: `test${screenshotCount}.png` });
