@@ -1,20 +1,21 @@
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
-const iPhoneXR = devices['iPhone XR landscape'];
+const iPhone = devices['iPhone 8 Plus landscape'];
 
 const Item = {
-  divCartItem: '',
+  cartItemDiv: '',
+  storeMarkerElement: '',
   itemName: '',
   x: '',
   y: ''
 };
 
-export const itemArray = [];
+const itemArray = [];
 
 puppeteer.launch({ headless: false }).then(async browser => {
   const page = await browser.newPage();
   // emulate mobile browser to access store map link
-  await page.emulate(iPhoneXR);
+  await page.emulate(iPhone);
 
   let cartUrl =
     'https://www.homedepot.com/mycart/home?userId=cd14e1db-18d4-4f32-9f20-49a9814b2cc8&customerId=cd14e1db-18d4-4f32-9f20-49a9814b2cc8&sharedCartId=HL100097460525?cm_mmc=ecc-_-THD_SHARE_CART__V1_M1_CA-_-VIEW_CART#';
@@ -45,10 +46,10 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
   let screenshotCount = 1;
 
-  // loop through cartItems
+  // <------------ cartItems data scraping loop ------------>
   for (let i = 0; i < cartItems.length; i++) {
     // go to established cart and wait for the page to load
-    await page.goto('https://www.homedepot.com/mycart/home#');
+    await page.goto('https://www.homedepot.com/mycart/home');
     await page.waitForSelector('div.cartTotals');
 
     // rebuild cartItems array
@@ -61,10 +62,10 @@ puppeteer.launch({ headless: false }).then(async browser => {
     await itemLink.click();
 
     // wait for the store map link to be available
-    await page.waitForSelector('div.store-availability__inventory > a');
+    await page.waitForSelector('#store-availability > div > fieldset > div > a');
 
     // click store map link
-    await page.$eval('div.store-availability__inventory > a', element =>
+    await page.$eval('#store-availability > div > fieldset > div > a', element =>
       element.click()
     );
 
@@ -87,10 +88,13 @@ puppeteer.launch({ headless: false }).then(async browser => {
     // increment screenshotCount for .png naming sequence
     ++screenshotCount;
   }
+  // <------------ cartItems data scraping loop ------------>
+
   //document.querySelector('g.storemarker').dataset.x
   //document.querySelector('g.storemarker').dataset.y
   // grab the g.active-aisle (g.storemarker) innerHtml and store it in ITEM object
   // need to grab rect.(x,y) coordinates from g.storemarker for each item
+  // svg parent graph element is #storemap-wrapper > svg > g.outer > g (width="450" height="319.13113161025126")
   // Traveling Salesman algorithm + rerender div.cartItem(s) in correct order
   // return store map with visualization of TS route
 
