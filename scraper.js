@@ -3,9 +3,10 @@ const devices = require('puppeteer/DeviceDescriptors');
 const iPhone = devices['iPhone 8 Plus landscape'];
 
 const Item = {
-  cartItemDiv: '',
-  storeMarkerElement: '',
   itemName: '',
+  cartItemDiv: '',
+  locationText: '',
+  storeMarkerElement: '',
   x: '',
   y: ''
 };
@@ -43,6 +44,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
   // grab each div.cartItem and store in cartItems array
   const cartItems = await page.$$('div.cartItem');
+  // console.log(cartItems);
 
   let screenshotCount = 1;
 
@@ -57,30 +59,54 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
     let item = cartItems[i];
 
+    // console.log(document.querySelector('div.cartItem__productId').outerText.slice(7))
+
+    // get itemName
+    let itemName = await item.$eval('h3.cartItem__brandName', element => element.outerText );
+    console.log(itemName);
+
+    // get cartItemDiv
+    let cartItemDiv = await item.$eval('div:nth-child(1)', element => element.outerHTML);
+    // console.log(cartItemDiv);
+
+    // window[`${newItem.outerText.slice(7)}`] = new Item;
+
     // click the 'div.cartImage > a' to navigate to the item page
     let itemLink = await item.$('div.cartImage > a');
     await itemLink.click();
 
     // wait for the store map link to be available
-    await page.waitForSelector('#store-availability > div > fieldset > div > a');
+    await page.waitForSelector(
+      '#store-availability > div > fieldset > div > a'
+      );
+      page.waitForNavigation();
+
+      //#store-availability > div > fieldset > div > a > span.u__bold.store-availability__content
+      let locationText = await page.$eval('a > .store-availability__content', element => element.outerText );
+      console.log(locationText);
 
     // click store map link
-    await page.$eval('#store-availability > div > fieldset > div > a', element =>
-      element.click()
+    await page.$eval(
+      '#store-availability > div > fieldset > div > a',
+      element => element.click()
     );
 
-    // (await page.waitForSelector('g.storemarker')) ||
-    await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
-    // if (document.querySelector('g.storemarker')) {
-    // add
-    // document.querySelector('g.storemarker').dataset.x
-    // and
-    // document.querySelector('g.storemarker').dataset.y
-    // to new Item object
-    // }
+    // wait for data to be loaded so we can get storemarker and vertex
+    await page.waitForNavigation({ waitUntil: 'networkidle2' });
+
+    if (await page.$('g.storemarker')) {
+      const storeMarkerElement = await page.$eval('g.storemarker', element => element.outerHTML );
+      const x = await page.$eval('g.storemarker', element => element.dataset.x );
+      const y = await page.$eval('g.storemarker', element => element.dataset.y );
+      console.log(storeMarkerElement);
+      console.log('x:', x);
+      console.log('y:', y);
+    }
 
     // zoom out 1x store layout
+    await page.waitForSelector('rect.minus-box');
     await page.click('rect.minus-box');
+
 
     // screenshot the store map
     await page.screenshot({ path: `test${screenshotCount}.png` });
