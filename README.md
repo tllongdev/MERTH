@@ -1,4 +1,4 @@
-## Most Efficient Route Thru HomeDepot
+## Most Efficient Route Through Home-depot
 
 Merth (Gaelic): Decision in a time of crisis.
 
