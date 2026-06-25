@@ -1,21 +1,34 @@
 {
   "name": "merth",
-  "version": "1.0.0",
-  "description": "Most Efficient Route Through HomeDepot",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "keywords": [
-    "scraping",
-    "web scraping",
-    "puppeteer",
-    "Traveling Salesman",
-    "shortest distance algorithm"
-  ],
+  "version": "2.0.0",
+  "private": true,
+  "description": "Most Efficient Route Through HomeDepot - plan the shortest in-store route to collect every item in your cart.",
   "author": "Timothy Lee Long",
   "license": "MIT",
+  "keywords": [
+    "traveling-salesman",
+    "simulated-annealing",
+    "route-optimization",
+    "home-depot",
+    "nextjs"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
-    "puppeteer": "^2.1.1"
+    "next": "^16.2.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "playwright": "1.54.1",
+    "typescript": "5.8.3"
   }
 }
