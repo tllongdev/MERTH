@@ -109,9 +109,12 @@ So the selectors cannot be re-verified until the bot wall is cleared. The
 recommended way to get past it - fully automated, per store, on the fly - is a
 **hosted "scraping browser"** (Bright Data / ZenRows / Oxylabs) that handles
 Akamai for you. Our Playwright scraper connects to it over CDP with no logic
-changes: set `SCRAPING_BROWSER_CDP_URL` (see `.env.example`) and live mode routes
-through it automatically; unset, it uses a local browser (dev only). Diagnostic
-scripts: [`scripts/recon.mjs`](./scripts/recon.mjs),
+changes: copy `.env.example` to `.env.local`, set `SCRAPING_BROWSER_CDP_URL`, and
+live mode routes through it automatically. The Next.js dev/build server loads
+`.env.local` natively (no flag needed); the standalone scripts load it too via
+`npm run <script>`. Unset, it falls back to a local browser (dev only). Verify
+access with `npm run test:browser`. Diagnostic scripts:
+[`scripts/recon.mjs`](./scripts/recon.mjs),
 [`scripts/recon-headed.mjs`](./scripts/recon-headed.mjs).
 
 There is also an unresolved question (can't be answered until past the wall):
@@ -123,9 +126,11 @@ is captured.
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Dev server |
+| `npm run dev` | Dev server (auto-loads `.env.local`) |
 | `npm run build` | Production build |
 | `npm run typecheck` | `tsc --noEmit` |
+| `npm run test:browser` | Verify the hosted scraping browser clears Akamai |
+| `npm run recon` / `recon:headed` | Inspect Home Depot's live DOM |
 
 ## License
 

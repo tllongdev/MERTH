@@ -1,7 +1,7 @@
 // Verify a hosted scraping browser actually gets past Home Depot's Akamai wall.
 //
 // 1. Put your provider's CDP endpoint in .env.local as SCRAPING_BROWSER_CDP_URL
-// 2. Run: node --env-file=.env.local scripts/test-scraping-browser.mjs
+// 2. Run: npm run test:browser   (loads .env.local automatically)
 //
 // Success = HTTP 200 on a product page and "Aisle"/"storemap" keywords present.
 // Failure = 403 / "Error Page" (still blocked) or a connection error.

@@ -56,8 +56,13 @@ async function acquireBrowser(): Promise<{ browser: import("playwright").Browser
   const { chromium } = await import("playwright");
   const cdpUrl = process.env.SCRAPING_BROWSER_CDP_URL;
   if (cdpUrl) {
+    console.log("[merth] live mode: connecting to hosted scraping browser over CDP");
     return { browser: await chromium.connectOverCDP(cdpUrl), remote: true };
   }
+  console.warn(
+    "[merth] live mode: SCRAPING_BROWSER_CDP_URL not set - using a local browser. " +
+      "Home Depot's Akamai wall will likely 403 product pages. Set it in .env.local.",
+  );
   return { browser: await chromium.launch({ headless: true }), remote: false };
 }
 

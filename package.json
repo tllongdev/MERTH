@@ -17,7 +17,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:browser": "node --env-file-if-exists=.env.local scripts/test-scraping-browser.mjs",
+    "recon": "node --env-file-if-exists=.env.local scripts/recon.mjs",
+    "recon:headed": "node --env-file-if-exists=.env.local scripts/recon-headed.mjs",
+    "shot": "node --env-file-if-exists=.env.local scripts/shot.mjs"
   },
   "dependencies": {
     "next": "^16.2.9",
