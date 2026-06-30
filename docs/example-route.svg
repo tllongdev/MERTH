@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect x="0" y="0" width="900" height="600" fill="#f6f6f3"/>
+  <rect x="24" y="24" width="852" height="552" rx="10" fill="#ffffff" stroke="#c9ccd3" stroke-width="3"/>
+
+  <!-- back-wall departments -->
+  <g font-family="sans-serif" font-size="15" fill="#7b7f88" text-anchor="middle">
+    <rect x="44" y="44" width="150" height="86" rx="6" fill="#eef1f6"/><text x="119" y="92">Paint</text>
+    <rect x="206" y="44" width="150" height="86" rx="6" fill="#eef1f6"/><text x="281" y="92">Hardware</text>
+    <rect x="368" y="44" width="150" height="86" rx="6" fill="#eef1f6"/><text x="443" y="92">Plumbing</text>
+    <rect x="530" y="44" width="150" height="86" rx="6" fill="#eef1f6"/><text x="605" y="92">Electrical</text>
+    <rect x="692" y="44" width="160" height="86" rx="6" fill="#eef1f6"/><text x="772" y="92">Tools</text>
+  </g>
+
+  <!-- center aisle runs -->
+  <g fill="#dde0e6">
+    <rect x="120" y="180" width="40" height="240" rx="5"/>
+    <rect x="250" y="180" width="40" height="240" rx="5"/>
+    <rect x="380" y="180" width="40" height="240" rx="5"/>
+    <rect x="510" y="180" width="40" height="240" rx="5"/>
+    <rect x="640" y="180" width="40" height="240" rx="5"/>
+  </g>
+  <g font-family="sans-serif" font-size="13" fill="#9aa0ab" text-anchor="middle">
+    <text x="140" y="170">A4</text><text x="270" y="170">A9</text><text x="400" y="170">A14</text>
+    <text x="530" y="170">A21</text><text x="660" y="170">A27</text>
+  </g>
+
+  <!-- right-side bulk / lumber + garden -->
+  <rect x="720" y="180" width="132" height="150" rx="6" fill="#eef1f6"/>
+  <rect x="720" y="350" width="132" height="120" rx="6" fill="#eaf3ea"/>
+  <g font-family="sans-serif" font-size="15" fill="#7b7f88" text-anchor="middle">
+    <text x="786" y="260">Lumber</text><text x="786" y="415">Garden</text>
+  </g>
+
+  <!-- storefront labels -->
+  <g font-family="sans-serif" font-size="13" fill="#9aa0ab" text-anchor="middle">
+    <text x="120" y="566">Registers</text><text x="800" y="566">Entrance</text>
+  </g>
+<path d="M800.0,540.0L786.0,415.0L772.0,230.0L605.0,300.0L443.0,165.0L281.0,230.0L119.0,150.0L120.0,540.0" fill="none" stroke="#f96302" stroke-width="7.642272" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="21.016248 13.373975999999999" opacity="0.95"></path><g class="merth-terminal" data-kind="entrance"><rect x="780.89432" y="520.89432" width="38.21136" height="38.21136" rx="5.731704" fill="#36c08a" stroke="#0c0d10" stroke-width="1.910568"></rect><text x="800.0" y="540.0" fill="#ffffff" font-size="13.373975999999999" font-weight="700" text-anchor="middle" dominant-baseline="central">IN</text></g><g class="merth-stop" data-stop="1" data-item-id="1006"><circle cx="786.0" cy="415.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="786.0" y="415.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">1</text></g><g class="merth-stop" data-stop="2" data-item-id="1005"><circle cx="772.0" cy="230.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="772.0" y="230.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">2</text></g><g class="merth-stop" data-stop="3" data-item-id="1004"><circle cx="605.0" cy="300.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="605.0" y="300.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">3</text></g><g class="merth-stop" data-stop="4" data-item-id="1003"><circle cx="443.0" cy="165.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="443.0" y="165.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">4</text></g><g class="merth-stop" data-stop="5" data-item-id="1002"><circle cx="281.0" cy="230.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="281.0" y="230.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">5</text></g><g class="merth-stop" data-stop="6" data-item-id="1001"><circle cx="119.0" cy="150.0" r="19.10568" fill="#f96302" stroke="#ffffff" stroke-width="2.6747952"></circle><text x="119.0" y="150.0" fill="#ffffff" font-size="22.926816" font-weight="700" text-anchor="middle" dominant-baseline="central">6</text></g><g class="merth-terminal" data-kind="checkout"><rect x="100.89432" y="520.89432" width="38.21136" height="38.21136" rx="5.731704" fill="#e8eaed" stroke="#0c0d10" stroke-width="1.910568"></rect><text x="120.0" y="540.0" fill="#0c0d10" font-size="13.373975999999999" font-weight="700" text-anchor="middle" dominant-baseline="central">PAY</text></g></svg>
