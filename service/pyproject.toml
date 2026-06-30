@@ -10,7 +10,9 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.32",
     "pydantic>=2.9",
-    "scrapling[fetchers]>=0.4.9",
+    # Stealth Playwright fork - drives real Chrome past Akamai. We use the system
+    # Chrome channel (real_chrome), so no separate browser download is required.
+    "patchright>=1.60",
 ]
 
 [project.optional-dependencies]
